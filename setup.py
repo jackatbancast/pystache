@@ -317,7 +317,7 @@ Run the following command and commit the changes--
 #
 #   https://github.com/simplejson/simplejson/blob/master/CHANGES.txt
 #
-requires = []
+requires = ['pymongo']
 if py_version < (2, 5):
     requires.append('simplejson<2.1')
 elif py_version < (2, 6):
@@ -328,13 +328,13 @@ INSTALL_REQUIRES = requires
 # TODO: decide whether to use find_packages() instead.  I'm not sure that
 #   find_packages() is available with distutils, for example.
 PACKAGES = [
-    'pystache',
-    'pystache.commands',
+    'pymstache',
+    'pymstache.commands',
     # The following packages are only for testing.
-    'pystache.tests',
-    'pystache.tests.data',
-    'pystache.tests.data.locator',
-    'pystache.tests.examples',
+    'pymstache.tests',
+    'pymstache.tests.data',
+    'pymstache.tests.data.locator',
+    'pymstache.tests.examples',
 ]
 
 
@@ -380,28 +380,28 @@ def main(sys_argv):
     template_files = ['*.mustache', '*.txt']
     extra_args = get_extra_args()
 
-    setup(name='pystache',
+    setup(name='pymstache',
           version=VERSION,
           license='MIT',
           description='Mustache for Python',
           long_description=long_description,
-          author='Chris Wanstrath',
-          author_email='chris@ozmm.org',
-          maintainer='Chris Jerdonek',
-          maintainer_email='chris.jerdonek@gmail.com',
-          url='http://github.com/defunkt/pystache',
+          author='Jack Stephenson',
+          author_email='jack@bancast.net',
+          maintainer='Jack Stephenson',
+          maintainer_email='jack@bancast.net',
+          url='http://github.com/jackatbancast/pymstache',
           install_requires=INSTALL_REQUIRES,
           packages=PACKAGES,
           package_data = {
               # Include template files so tests can be run.
-              'pystache.tests.data': template_files,
-              'pystache.tests.data.locator': template_files,
-              'pystache.tests.examples': template_files,
+              'pymstache.tests.data': template_files,
+              'pymstache.tests.data.locator': template_files,
+              'pymstache.tests.examples': template_files,
           },
           entry_points = {
             'console_scripts': [
-                'pystache=pystache.commands.render:main',
-                'pystache-test=pystache.commands.test:main',
+                'pymstache=pymstache.commands.render:main',
+                'pymstache-test=pymstache.commands.test:main',
             ],
           },
           classifiers = CLASSIFIERS,
